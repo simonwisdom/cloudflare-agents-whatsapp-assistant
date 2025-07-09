@@ -142,3 +142,65 @@ dist
 .wrangler
 .dev.vars
 
+# WhatsApp MCP Server
+mcp-servers/whatsapp-mcp/whatsapp-bridge/store/*.db
+mcp-servers/whatsapp-mcp/whatsapp-bridge/store/*.db-*
+mcp-servers/whatsapp-mcp/whatsapp-bridge/whatsapp-session/
+
+# ElevenLabs MCP Server
+mcp-servers/elevenlabs/.venv/
+mcp-servers/elevenlabs/__pycache__/
+mcp-servers/elevenlabs/*.egg-info/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Go binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Demo files
+demo-video.*
+screenshots/
+
+# Local development
+.local/
+temp/
+tmp/
+
+CLAUDE.md

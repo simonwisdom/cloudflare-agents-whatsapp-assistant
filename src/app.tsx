@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback, use } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useAgent } from "agents/react";
 import { useAgentChat } from "agents/ai-react";
 import type { Message } from "@ai-sdk/react";
@@ -148,7 +148,7 @@ export default function Chat() {
 
   useEffect(() => {
     const hasAnthropicKeyPromise = fetch("/check-anthropic-key").then((res) =>
-      res.json(),
+      res.json()
     );
     hasAnthropicKeyPromise.then((data) => {
       setHasAnthropicKey((data as { success: boolean }).success);
@@ -158,7 +158,7 @@ export default function Chat() {
   return (
     <HasAnthropicKey.Provider value={hasAnthropicKey}>
       <div className="h-[100vh] w-full p-4 flex justify-center items-center bg-fixed overflow-hidden">
-        <div className="h-[calc(100vh-2rem)] w-full mx-auto max-w-lg flex flex-col shadow-xl rounded-md overflow-hidden relative border border-neutral-300 dark:border-neutral-800">
+        <div className="h-[calc(100vh-2rem)] w-full flex flex-col shadow-xl rounded-md overflow-hidden relative border border-neutral-300 dark:border-neutral-800">
           <div className="px-4 py-3 border-b border-neutral-300 dark:border-neutral-800 flex items-center gap-3 sticky top-0 z-10">
             <div className="flex items-center justify-center h-8 w-8">
               <svg
@@ -221,7 +221,9 @@ export default function Chat() {
                     <div className="bg-[#F48120]/10 text-[#F48120] rounded-full p-3 inline-flex">
                       <Robot size={24} />
                     </div>
-                    <h3 className="font-semibold text-lg">Welcome to AI Chat</h3>
+                    <h3 className="font-semibold text-lg">
+                      Welcome to AI Chat
+                    </h3>
                     <p className="text-muted-foreground text-sm">
                       Start a conversation with your AI assistant. Try asking
                       about:
@@ -257,7 +259,7 @@ export default function Chat() {
                     className={`flex ${isUser ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`flex gap-2 max-w-[85%] ${
+                      className={`flex gap-2 max-w-[85%] md:max-w-3xl ${
                         isUser ? "flex-row-reverse" : "flex-row"
                       }`}
                     >
@@ -429,7 +431,9 @@ export default function Chat() {
                     <button
                       type="submit"
                       className="inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full p-1.5 h-fit border border-neutral-200 dark:border-neutral-800"
-                      disabled={pendingToolCallConfirmation || !agentInput.trim()}
+                      disabled={
+                        pendingToolCallConfirmation || !agentInput.trim()
+                      }
                       aria-label="Send message"
                     >
                       <PaperPlaneTilt size={16} />

@@ -1,3 +1,15 @@
-ANTHROPIC_API_KEY=sk-proj-1234567890
-# Optional - Cloudflare AI Gateway https://developers.cloudflare.com/ai-gateway/
-# GATEWAY_BASE_URL=https://gateway.ai.cloudflare.com/v1/..
+# Anthropic API Key (required)
+# Get your API key from: https://console.anthropic.com/
+ANTHROPIC_API_KEY=sk-ant-api03-...
+
+# ElevenLabs API Key (optional - for voice features)
+# Get your API key from: https://elevenlabs.io/
+ELEVENLABS_API_KEY=your-elevenlabs-api-key-here
+
+# Cloudflare AI Gateway (optional - for rate limiting and caching)
+# Learn more: https://developers.cloudflare.com/ai-gateway/
+GATEWAY_BASE_URL=https://gateway.ai.cloudflare.com/v1/YOUR_ACCOUNT_ID/YOUR_GATEWAY_NAME/anthropic
+
+# WhatsApp Configuration
+# Note: WhatsApp connection is done via QR code in the UI
+# No additional configuration needed here

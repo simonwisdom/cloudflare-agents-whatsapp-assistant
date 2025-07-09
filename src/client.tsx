@@ -5,7 +5,7 @@ import "./styles.css";
 import { Providers } from "@/providers";
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
@@ -14,5 +14,5 @@ root.render(
         <Chat />
       </div>
     </Providers>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

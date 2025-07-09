@@ -1,7 +1,5 @@
 import { routeAgentRequest, type Schedule } from "agents";
 
-import { unstable_getSchedulePrompt } from "agents/schedule";
-
 import { AIChatAgent } from "agents/ai-chat-agent";
 import {
   createDataStreamResponse,
@@ -66,12 +64,22 @@ export class ChatInternal extends AIChatAgent<Env> {
         // Stream the AI response using GPT-4
         const result = streamText({
           model,
-          system: `You are a helpful assistant that can do various tasks... 
+          system: `You are a productivity assistant. Your function is to analyze my WhatsApp messages and organize them into business and social categories, summarizing key information in structured table format.
 
-${unstable_getSchedulePrompt({ date: new Date() })}
+          Scan all recent messages for business-related topics. Extract actionable tasks, deadlines, commitments, and follow-ups and populate 'business_communications'.
 
-If the user asks to schedule a task, use the schedule tool to schedule the task.
-`,
+Scan all recent messages for social conversations. Extract any plans, events, or to-dos and populate 'social_interactions'.
+
+          Format your response as a markdown table with the following structure:
+
+          | Category | Topic | Action Items | Deadlines | Contacts |
+          |----------|-------|--------------|-----------|----------|
+          | Business | [topic] | [action items] | [deadlines] | [contacts] |
+          | Social | [topic] | [plans/events] | [dates] | [contacts] |
+
+         
+
+Finally, create a concise 2-3 sentence summary of the most important business and social points. This summary will be read aloud, so it should be natural and easy to understand. Populate the 'voice_summary' field with this text. Make this summary action oriented, use phrases like "you should", "you need to", "you can", "you might want to", etc.`,
           messages: processedMessages,
           tools: allTools,
           onFinish: async (args) => {
@@ -106,7 +114,7 @@ If the user asks to schedule a task, use the schedule tool to schedule the task.
   }
 }
 
-export const Chat = withInstrumentation(ChatInternal);
+export const Chat = withInstrumentation(ChatInternal as any);
 
 /**
  * Worker entry point that routes incoming requests to the appropriate handler
@@ -118,8 +126,8 @@ export default {
 
       if (url.pathname === "/check-anthropic-key") {
         const hasAnthropicKey = !!process.env.ANTHROPIC_API_KEY;
-        return Response.json({
-          success: hasAnthropicKey,
+        return new Response(hasAnthropicKey ? "true" : "false", {
+          headers: { "Content-Type": "text/plain" },
         });
       }
       if (!process.env.ANTHROPIC_API_KEY) {
