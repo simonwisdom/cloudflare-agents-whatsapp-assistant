@@ -3,8 +3,7 @@
 > Transform your WhatsApp into an AI-powered productivity hub that automatically categorizes messages, extracts action items, and provides voice summaries.
 
 ## 🎥 Demo Video
-
-[Watch the demo video here](./hackathon-demo-video.mp4)
+<video controls src="https://github.com/user-attachments/assets/d09a5a8d-29b1-48fc-8f9c-926c1eb7a835" style="max-width: 100%;"></video>
 
 
 ## 🛠️ What I Built
